@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KeyboxWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee575b8dac6b2054588d2f778cc2492549f7c594")]
 [assembly: System.Reflection.AssemblyProductAttribute("KeyboxWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KeyboxWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
