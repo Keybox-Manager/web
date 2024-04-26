@@ -13,15 +13,21 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+
+
+    // Главная, где представлены все карточки
     public IActionResult Index()
     {
         return View();
     }
 
-    public IActionResult Privacy()
+    // Карточка, где вся информация об УЗ
+    public IActionResult Card()
     {
         return View();
     }
+
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
