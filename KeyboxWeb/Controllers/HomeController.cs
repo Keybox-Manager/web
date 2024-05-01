@@ -18,9 +18,9 @@ public class HomeController : Controller
     }
 
     // Главная, где представлены все карточки
-    public async Task<IActionResult> Index()
+    public IActionResult Index()
     {
-        var accounts = await _httpHelper.GetAsync(); //Пример использования api
+        //var accounts = await _httpHelper.GetAsync(); //Пример использования api
         return View();
     }
 
