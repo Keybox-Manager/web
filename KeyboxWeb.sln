@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyboxWeb", "KeyboxWeb.csproj", "{535E949C-CCBA-4868-B2F3-435427CE63FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyboxWeb", "KeyboxWeb\KeyboxWeb.csproj", "{535E949C-CCBA-4868-B2F3-435427CE63FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboxWeb.Core", "KeyboxWeb.Core\KeyboxWeb.Core.csproj", "{EA0D03BD-51C8-45FE-BBAD-88AE546EE928}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboxWeb.Application", "KeyboxWeb.Application\KeyboxWeb.Application.csproj", "{D37B831E-547B-496A-AE7C-646A3BF4F47A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{535E949C-CCBA-4868-B2F3-435427CE63FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{535E949C-CCBA-4868-B2F3-435427CE63FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{535E949C-CCBA-4868-B2F3-435427CE63FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA0D03BD-51C8-45FE-BBAD-88AE546EE928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA0D03BD-51C8-45FE-BBAD-88AE546EE928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA0D03BD-51C8-45FE-BBAD-88AE546EE928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA0D03BD-51C8-45FE-BBAD-88AE546EE928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D37B831E-547B-496A-AE7C-646A3BF4F47A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D37B831E-547B-496A-AE7C-646A3BF4F47A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D37B831E-547B-496A-AE7C-646A3BF4F47A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D37B831E-547B-496A-AE7C-646A3BF4F47A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
