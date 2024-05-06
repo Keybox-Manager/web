@@ -1,9 +1,9 @@
-
 // Сервисы
-namespace KeyboxWeb.Interfaces;
+namespace KeyboxWeb.Interfaces.Services;
 
 
-public interface ICardService {
+public interface ICardService
+{
     // описание интерфейса ICardService
 
     string CardTitle();
