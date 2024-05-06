@@ -1,8 +1,27 @@
 {
   "version": 2,
-  "dgSpecHash": "00o09vieGN5gx+PhDI6g5ymxPKRon9GAcTE0ty6bco0osTOi4+72zPWZBU7yK24L/YtdS56HLxXSCBdgfUSpzA==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\woundmee\\Desktop\\keybox-web\\KeyboxWeb\\KeyboxWeb.csproj",
+  "dgSpecHash": "WUXJJydV1V+RsQx9zA4rWcTJZ4kr/v6Z7loyAaf4ir7/NDDP+JD4c5PHzwF5GRjbva+BARhitaenZLTCdi+q1A==",
+  "success": false,
+  "projectFilePath": "C:\\Git\\Keybox\\Web\\KeyboxWeb.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Не удалось найти проект \"C:\\Git\\Keybox\\KeyboxWeb.Application\\KeyboxWeb.Application.csproj\". Убедитесь, что ссылка на проект действительна и файл проекта существует.",
+      "libraryId": "C:\\Git\\Keybox\\KeyboxWeb.Application\\KeyboxWeb.Application.csproj",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Не удалось найти проект \"C:\\Git\\Keybox\\KeyboxWeb.Core\\KeyboxWeb.Core.csproj\". Убедитесь, что ссылка на проект действительна и файл проекта существует.",
+      "libraryId": "C:\\Git\\Keybox\\KeyboxWeb.Core\\KeyboxWeb.Core.csproj",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

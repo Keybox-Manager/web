@@ -1,31 +1,40 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\woundmee\\Desktop\\keybox-web\\KeyboxWeb\\KeyboxWeb.csproj": {}
+    "C:\\Git\\Keybox\\Web\\KeyboxWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\woundmee\\Desktop\\keybox-web\\KeyboxWeb\\KeyboxWeb.csproj": {
+    "C:\\Git\\Keybox\\Web\\KeyboxWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\woundmee\\Desktop\\keybox-web\\KeyboxWeb\\KeyboxWeb.csproj",
+        "projectUniqueName": "C:\\Git\\Keybox\\Web\\KeyboxWeb.csproj",
         "projectName": "KeyboxWeb",
-        "projectPath": "C:\\Users\\woundmee\\Desktop\\keybox-web\\KeyboxWeb\\KeyboxWeb.csproj",
-        "packagesPath": "C:\\Users\\woundmee\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\woundmee\\Desktop\\keybox-web\\KeyboxWeb\\obj\\",
+        "projectPath": "C:\\Git\\Keybox\\Web\\KeyboxWeb.csproj",
+        "packagesPath": "C:\\Users\\Huawei\\.nuget\\packages\\",
+        "outputPath": "C:\\Git\\Keybox\\Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\woundmee\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Huawei\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Git\\Keybox\\KeyboxWeb.Application\\KeyboxWeb.Application.csproj": {
+                "projectPath": "C:\\Git\\Keybox\\KeyboxWeb.Application\\KeyboxWeb.Application.csproj"
+              },
+              "C:\\Git\\Keybox\\KeyboxWeb.Core\\KeyboxWeb.Core.csproj": {
+                "projectPath": "C:\\Git\\Keybox\\KeyboxWeb.Core\\KeyboxWeb.Core.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -61,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
