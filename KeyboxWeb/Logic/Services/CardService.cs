@@ -2,7 +2,6 @@ using KeyboxWeb.Interfaces.Services;
 
 namespace KeyboxWeb.Logic.Services;
 
-
 public class CardService : ICardService
 {
     public string CardTitle()

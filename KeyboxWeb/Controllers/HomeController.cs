@@ -1,26 +1,21 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using KeyboxWeb.Models;
-// using KeyboxWeb.Core.Interfaces.Helpers;
-// using KeyboxWeb.Core.Models;
 
 namespace KeyboxWeb.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    // private readonly IHttpHelper<Account> _httpHelper;
 
-    // public HomeController(ILogger<HomeController> logger, IHttpHelper<Account> httpHelper)
-    // {
-    //     _logger = logger;
-    //     _httpHelper = httpHelper;
-    // }
+    public HomeController(ILogger<HomeController> logger)
+    {
+        _logger = logger;
+    }
 
     // Главная, где представлены все карточки
     public IActionResult Index()
     {
-        //var accounts = await _httpHelper.GetAsync(); //Пример использования api
         return View();
     }
 
