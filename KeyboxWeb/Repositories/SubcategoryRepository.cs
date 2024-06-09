@@ -14,42 +14,42 @@ public sealed class SubcategoryRepository : IRepository<Subcategory>
         _context = context;
     }
 
-    public async Task AddAsync(Subcategory model)
+    public void Add(Subcategory model)
     {
-        await _context.AddAsync(model);
-        await _context.SaveChangesAsync();
+        _context.Add(model);
+        _context.SaveChanges();
     }
 
-    public async Task DeleteAsync(int id)
+    public void Delete(int id)
     {
-        await _context.Subcategories
+        _context.Subcategories
             .Where(x => x.Id == id)
-            .ExecuteDeleteAsync();
+            .ExecuteDelete();
     }
 
-    public async Task<IEnumerable<Subcategory>> GetAsync()
+    public IEnumerable<Subcategory> Get()
     {
-        return await _context.Subcategories
+        return _context.Subcategories
             .AsNoTracking()
             .Include(x => x.Category)
             .Include(x => x.Accounts)
-            .ToListAsync();
+            .ToList();
     }
 
-    public async Task<Subcategory?> GetAsync(int id)
+    public Subcategory? Get(int id)
     {
-        return await _context.Subcategories
+        return _context.Subcategories
             .AsNoTracking()
             .Include(x => x.Category)
             .Include(x => x.Accounts)
-            .FirstOrDefaultAsync(x => x.Id == id);
+            .FirstOrDefault(x => x.Id == id);
     }
 
-    public async Task UpdateAsync(Subcategory model)
+    public void Update(Subcategory model)
     {
-        await _context.Subcategories
+        _context.Subcategories
             .Where(w => w.Id == model.Id)
-            .ExecuteUpdateAsync(e => e
+            .ExecuteUpdate(e => e
                 .SetProperty(p => p.CategoryId, model.CategoryId)
                 .SetProperty(p => p.Name, model.Name)
                 .SetProperty(p => p.Url, model.Url)
