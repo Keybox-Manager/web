@@ -14,42 +14,42 @@ public sealed class VaultRepository : IRepository<Vault>
         _context = context;
     }
 
-    public async Task AddAsync(Vault model)
+    public void Add(Vault model)
     {
-        await _context.AddAsync(model);
-        await _context.SaveChangesAsync();
+        _context.Add(model);
+        _context.SaveChanges();
     }
 
-    public async Task DeleteAsync(int id)
+    public void Delete(int id)
     {
-        await _context.Vaults
+        _context.Vaults
             .Where(x => x.Id == id)
-            .ExecuteDeleteAsync();
+            .ExecuteDelete();
     }
 
-    public async Task<IEnumerable<Vault>> GetAsync()
+    public IEnumerable<Vault> Get()
     {
-        return await _context.Vaults
+        return _context.Vaults
             .AsNoTracking()
             .Include(x => x.User)
             .Include(x => x.Categories)
-            .ToListAsync();
+            .ToList();
     }
 
-    public async Task<Vault?> GetAsync(int id)
+    public Vault? Get(int id)
     {
-        return await _context.Vaults
+        return _context.Vaults
             .AsNoTracking()
             .Include(x => x.User)
             .Include(x => x.Categories)
-            .FirstOrDefaultAsync(x => x.Id == id);
+            .FirstOrDefault(x => x.Id == id);
     }
 
-    public async Task UpdateAsync(Vault model)
+    public void Update(Vault model)
     {
-        await _context.Vaults
+        _context.Vaults
             .Where(w => w.Id == model.Id)
-            .ExecuteUpdateAsync(e => e
+            .ExecuteUpdate(e => e
                 .SetProperty(p => p.UserId, model.UserId)
                 .SetProperty(p => p.Name, model.Name)
             );

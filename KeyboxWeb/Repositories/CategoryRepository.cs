@@ -14,42 +14,42 @@ public sealed class CategoryRepository : IRepository<Category>
         _context = context;
     }
 
-    public async Task AddAsync(Category model)
+    public void Add(Category model)
     {
-        await _context.AddAsync(model);
-        await _context.SaveChangesAsync();
+        _context.AddAsync(model);
+        _context.SaveChanges();
     }
 
-    public async Task DeleteAsync(int id)
+    public void Delete(int id)
     {
-        await _context.Categories
+        _context.Categories
             .Where(x => x.Id == id)
-            .ExecuteDeleteAsync();
+            .ExecuteDelete();
     }
 
-    public async Task<IEnumerable<Category>> GetAsync()
+    public IEnumerable<Category> Get()
     {
-        return await _context.Categories
+        return _context.Categories
             .AsNoTracking()
             .Include(x=>x.Vault)
             .Include(x => x.Subcategories)
-            .ToListAsync();
+            .ToList();
     }
 
-    public async Task<Category?> GetAsync(int id)
+    public Category? Get(int id)
     {
-        return await _context.Categories
+        return _context.Categories
             .AsNoTracking()
             .Include(x => x.Vault)
             .Include(x => x.Subcategories)
-            .FirstOrDefaultAsync(x => x.Id == id);
+            .FirstOrDefault(x => x.Id == id);
     }
 
-    public async Task UpdateAsync(Category model)
+    public void Update(Category model)
     {
-        await _context.Categories
+        _context.Categories
             .Where(w => w.Id == model.Id)
-            .ExecuteUpdateAsync(e => e
+            .ExecuteUpdate(e => e
                 .SetProperty(p => p.VaultId, model.VaultId)
                 .SetProperty(p => p.Name, model.Name)
                 .SetProperty(p => p.Description, model.Description)

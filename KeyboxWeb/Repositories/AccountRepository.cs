@@ -14,40 +14,40 @@ public sealed class AccountRepository : IRepository<Account>
         _context = context;
     }
 
-    public async Task AddAsync(Account model)
+    public void Add(Account model)
     {
-        await _context.AddAsync(model);
-        await _context.SaveChangesAsync();
+        _context.Add(model);
+        _context.SaveChanges();
     }
 
-    public async Task DeleteAsync(int id)
+    public void Delete(int id)
     {
-        await _context.Accounts
+        _context.Accounts
             .Where(x => x.Id == id)
-            .ExecuteDeleteAsync();
+            .ExecuteDelete();
     }
 
-    public async Task<IEnumerable<Account>> GetAsync()
+    public IEnumerable<Account> Get()
     {
-        return await _context.Accounts
+        return _context.Accounts
             .AsNoTracking()
             .Include(x => x.Subcategory)
-            .ToListAsync();
+            .ToList();
     }
 
-    public async Task<Account?> GetAsync(int id)
+    public Account? Get(int id)
     {
-        return await _context.Accounts
+        return _context.Accounts
             .AsNoTracking()
             .Include(x => x.Subcategory)
-            .FirstOrDefaultAsync(x => x.Id == id);
+            .FirstOrDefault(x => x.Id == id);
     }
 
-    public async Task UpdateAsync(Account model)
+    public void Update(Account model)
     {
-        await _context.Accounts
+        _context.Accounts
             .Where(w => w.Id == model.Id)
-            .ExecuteUpdateAsync(e => e
+            .ExecuteUpdate(e => e
                 .SetProperty(p => p.SubcategoryId, model.SubcategoryId)
                 .SetProperty(p => p.Login, model.Login)
                 .SetProperty(p => p.Email, model.Email)

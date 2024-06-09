@@ -14,40 +14,40 @@ public sealed class UserRepository : IRepository<User>
         _context = context;
     }
 
-    public async Task AddAsync(User model)
+    public void Add(User model)
     {
-        await _context.AddAsync(model);
-        await _context.SaveChangesAsync();
+        _context.Add(model);
+        _context.SaveChanges();
     }
 
-    public async Task DeleteAsync(int id)
+    public void Delete(int id)
     {
-        await _context.Users
+        _context.Users
             .Where(x => x.Id == id)
-            .ExecuteDeleteAsync();
+            .ExecuteDelete();
     }
 
-    public async Task<IEnumerable<User>> GetAsync()
+    public IEnumerable<User> Get()
     {
-        return await _context.Users
+        return _context.Users
             .AsNoTracking()
             .Include(x => x.Vaults)
-            .ToListAsync();
+            .ToList();
     }
 
-    public async Task<User?> GetAsync(int id)
+    public User? Get(int id)
     {
-        return await _context.Users
+        return _context.Users
             .AsNoTracking()
             .Include(x => x.Vaults)
-            .FirstOrDefaultAsync(x => x.Id == id);
+            .FirstOrDefault(x => x.Id == id);
     }
 
-    public async Task UpdateAsync(User model)
+    public void Update(User model)
     {
-        await _context.Users
+        _context.Users
             .Where(w => w.Id == model.Id)
-            .ExecuteUpdateAsync(e => e
+            .ExecuteUpdate(e => e
                 .SetProperty(p => p.Name, model.Name)
                 .SetProperty(p => p.Password, model.Password)
                 .SetProperty(p => p.PasswordHint, model.PasswordHint)
