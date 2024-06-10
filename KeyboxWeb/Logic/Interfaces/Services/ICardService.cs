@@ -1,5 +1,5 @@
 // Сервисы
-namespace KeyboxWeb.Interfaces.Services;
+namespace KeyboxWeb.Logic.Interfaces.Services;
 
 
 public interface ICardService

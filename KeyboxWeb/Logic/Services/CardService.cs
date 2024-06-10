@@ -1,4 +1,4 @@
-using KeyboxWeb.Interfaces.Services;
+using KeyboxWeb.Logic.Interfaces.Services;
 
 namespace KeyboxWeb.Logic.Services;
 
