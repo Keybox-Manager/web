@@ -10,7 +10,7 @@ public class CryptoService : ICryptoService{
     // Cryptography Logic
 
     // Функция хеширования мастер-пароля
-    public string MasterPassToHash(string pass) {
+    public string MasterPassToHash(string password) {
         using(SHA256 sha256 = SHA256.Create()){
             byte[] bytes = Encoding.UTF8.GetBytes(pass);
             byte[] hash = sha256.ComputeHash(bytes);
@@ -22,7 +22,7 @@ public class CryptoService : ICryptoService{
 
 
     // Функция шифрования обычных паролей
-    public string EncryptPass(string key, string pass) {
+    public string EncryptPass(string key, string password) {
         byte[] iv = new byte[16];
         byte[] array;
 
@@ -39,7 +39,7 @@ public class CryptoService : ICryptoService{
                 {
                     using (StreamWriter streamWriter = new StreamWriter((Stream)cryptoStream))
                     {
-                        streamWriter.Write(pass);
+                        streamWriter.Write(password);
                     }
 
                     array = memoryStream.ToArray();
@@ -52,9 +52,9 @@ public class CryptoService : ICryptoService{
 
 
     // Функция расшифрования обычных паролей
-    public string DeсryptPass(string key, string pass) {
+    public string DecryptPass(string key, string password) {
         byte[] iv = new byte[16];
-        byte[] buffer = Convert.FromBase64String(pass);
+        byte[] buffer = Convert.FromBase64String(password);
 
         using (Aes aes = Aes.Create())
         {
