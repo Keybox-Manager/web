@@ -3,7 +3,7 @@ using KeyboxWeb.Models.Contexts;
 using KeyboxWeb.Models.Entites;
 using Microsoft.EntityFrameworkCore;
 
-namespace KeyboxWeb.Repositories;
+namespace KeyboxWeb.Models.Repositories;
 
 public sealed class CategoryRepository : IRepository<Category>
 {
@@ -31,7 +31,7 @@ public sealed class CategoryRepository : IRepository<Category>
     {
         return _context.Categories
             .AsNoTracking()
-            .Include(x=>x.Vault)
+            .Include(x => x.Vault)
             .Include(x => x.Subcategories)
             .ToList();
     }

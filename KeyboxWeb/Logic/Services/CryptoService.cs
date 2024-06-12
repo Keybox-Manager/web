@@ -10,19 +10,14 @@ public class CryptoService : ICryptoService{
     // Cryptography Logic
 
     // Функция хеширования мастер-пароля
-    public string MasterPassToHash(string password) {
-        using(SHA256 sha256 = SHA256.Create()){
-            byte[] bytes = Encoding.UTF8.GetBytes(pass);
-            byte[] hash = sha256.ComputeHash(bytes);
-
-            string hashPass = string.Concat(Array.ConvertAll(hash, x => x.ToString("x2")));
-            return hashPass;
-        }
+    public string PasswordToHash(string password) {
+        var bytes = Encoding.UTF8.GetBytes(password);
+        var hash = SHA256.HashData(bytes);
+        return Convert.ToHexString(hash);
     }
 
-
     // Функция шифрования обычных паролей
-    public string EncryptPass(string key, string password) {
+    public string EncryptPassword(string key, string password) {
         byte[] iv = new byte[16];
         byte[] array;
 
@@ -33,11 +28,11 @@ public class CryptoService : ICryptoService{
 
             ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
 
-            using (MemoryStream memoryStream = new MemoryStream())
+            using (MemoryStream memoryStream = new())
             {
-                using (CryptoStream cryptoStream = new CryptoStream((Stream)memoryStream, encryptor, CryptoStreamMode.Write))
+                using (CryptoStream cryptoStream = new(memoryStream, encryptor, CryptoStreamMode.Write))
                 {
-                    using (StreamWriter streamWriter = new StreamWriter((Stream)cryptoStream))
+                    using (StreamWriter streamWriter = new(cryptoStream))
                     {
                         streamWriter.Write(password);
                     }
@@ -50,9 +45,8 @@ public class CryptoService : ICryptoService{
         return Convert.ToBase64String(array);
     }
 
-
     // Функция расшифрования обычных паролей
-    public string DecryptPass(string key, string password) {
+    public string DecryptPassword(string key, string password) {
         byte[] iv = new byte[16];
         byte[] buffer = Convert.FromBase64String(password);
 
@@ -62,14 +56,13 @@ public class CryptoService : ICryptoService{
             aes.IV = iv;
             ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
 
-            using (MemoryStream memoryStream = new MemoryStream(buffer)) {
-                using (CryptoStream cryptoStream = new CryptoStream((Stream)memoryStream, decryptor, CryptoStreamMode.Read)) {
-                    using (StreamReader streamReader = new StreamReader((Stream)cryptoStream)) {
+            using (MemoryStream memoryStream = new(buffer)) {
+                using (CryptoStream cryptoStream = new(memoryStream, decryptor, CryptoStreamMode.Read)) {
+                    using (StreamReader streamReader = new(cryptoStream)) {
                         return streamReader.ReadToEnd();
                     }
                 }
             }
         }
     }
-
 }

@@ -1,4 +1,4 @@
-﻿using KeyboxWeb.Interfaces;
+﻿using KeyboxWeb.Logic.Interfaces;
 
 namespace KeyboxWeb.Extensions;
 

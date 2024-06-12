@@ -1,6 +1,6 @@
 ﻿namespace KeyboxWeb.Extensions;
 
-using KeyboxWeb.Interfaces;
+using KeyboxWeb.Logic.Interfaces;
 //using KeyboxWeb.Logic;
 
 internal static class ServicesRegisterExtension

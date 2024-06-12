@@ -3,7 +3,7 @@ namespace KeyboxWeb.Logic.Interfaces.Services;
 
 
 public interface ICryptoService {
-    string MasterPassToHash(string password);
-    string EncryptPass(string key, string password);
-    string DecryptPass(string key, string password);
+    string PasswordToHash(string password);
+    string EncryptPassword(string key, string password);
+    string DecryptPassword(string key, string password);
 }

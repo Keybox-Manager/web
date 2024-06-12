@@ -3,7 +3,7 @@ using KeyboxWeb.Models.Contexts;
 using KeyboxWeb.Models.Entites;
 using Microsoft.EntityFrameworkCore;
 
-namespace KeyboxWeb.Repositories;
+namespace KeyboxWeb.Models.Repositories;
 
 public sealed class VaultRepository : IRepository<Vault>
 {

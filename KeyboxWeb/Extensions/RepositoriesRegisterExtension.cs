@@ -1,6 +1,6 @@
 ﻿using KeyboxWeb.Logic.Interfaces.Repositories;
 using KeyboxWeb.Models.Entites;
-using KeyboxWeb.Repositories;
+using KeyboxWeb.Models.Repositories;
 
 namespace KeyboxWeb.Extensions;
 
