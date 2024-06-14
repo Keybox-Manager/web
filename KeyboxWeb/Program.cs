@@ -1,11 +1,22 @@
 using KeyboxWeb.Extensions;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options => {
+        options.LoginPath = "/home/login";
+        options.Cookie.Name = "Keybox-Manager";
+    });
+
+builder.Services.AddAuthorization();
+builder.Services.AddHttpContextAccessor();
+builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
+
 builder.Services.AddContexts(builder.Configuration);
-builder.Services.AddOptions(builder.Configuration);
 builder.Services.AddRepositories();
 builder.Services.AddServices();
 
@@ -24,6 +35,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

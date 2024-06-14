@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace KeyboxWeb.Migrations
 {
     [DbContext(typeof(KeyboxContext))]
-    [Migration("20240608144105_Create")]
+    [Migration("20240614142627_Create")]
     partial class Create
     {
         /// <inheritdoc />
@@ -124,7 +124,7 @@ namespace KeyboxWeb.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Email")
+                    b.Property<string>("Login")
                         .IsRequired()
                         .HasColumnType("text");
 

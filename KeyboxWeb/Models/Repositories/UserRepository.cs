@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KeyboxWeb.Models.Repositories;
 
-public sealed class UserRepository : IRepository<User>
+public sealed class UserRepository : IUserRepository
 {
     private readonly KeyboxContext _context;
 
@@ -14,9 +14,9 @@ public sealed class UserRepository : IRepository<User>
         _context = context;
     }
 
-    public void Add(User model)
+    public void Add(User user)
     {
-        _context.Add(model);
+        _context.Add(user);
         _context.SaveChanges();
     }
 
@@ -35,23 +35,23 @@ public sealed class UserRepository : IRepository<User>
             .ToList();
     }
 
-    public User? Get(int id)
+    public User? Get(string login)
     {
         return _context.Users
             .AsNoTracking()
             .Include(x => x.Vaults)
-            .FirstOrDefault(x => x.Id == id);
+            .FirstOrDefault(x => x.Login == login);
     }
 
-    public void Update(User model)
+    public void Update(User user)
     {
         _context.Users
-            .Where(w => w.Id == model.Id)
+            .Where(w => w.Id == user.Id)
             .ExecuteUpdate(e => e
-                .SetProperty(p => p.Name, model.Name)
-                .SetProperty(p => p.Password, model.Password)
-                .SetProperty(p => p.PasswordHint, model.PasswordHint)
-                .SetProperty(p => p.Email, model.Email)
+                .SetProperty(p => p.Name, user.Name)
+                .SetProperty(p => p.Login, user.Login)
+                .SetProperty(p => p.Password, user.Password)
+                .SetProperty(p => p.PasswordHint, user.PasswordHint)
             );
     }
 }
