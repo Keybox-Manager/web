@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace KeyboxWeb.Migrations
 {
     [DbContext(typeof(KeyboxContext))]
-    [Migration("20240614142627_Create")]
+    [Migration("20240614152714_Create")]
     partial class Create
     {
         /// <inheritdoc />
