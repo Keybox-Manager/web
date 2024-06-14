@@ -2,7 +2,6 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using KeyboxWeb.Models;
 using KeyboxWeb.Logic.Interfaces.Services;
-using Microsoft.AspNetCore.Authorization;
 
 namespace KeyboxWeb.Controllers;
 
@@ -18,7 +17,6 @@ public class HomeController : Controller
     }
 
     // Главная, где представлены все карточки
-    [Authorize]
     public IActionResult Index()
     {
         return View();
