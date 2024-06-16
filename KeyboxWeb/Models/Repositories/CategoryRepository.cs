@@ -32,7 +32,7 @@ public sealed class CategoryRepository : IRepository<Category>
         return _context.Categories
             .AsNoTracking()
             .Include(x => x.Vault)
-            .Include(x => x.Subcategories)
+            .Include(x => x.Cards)
             .ToList();
     }
 
@@ -41,7 +41,7 @@ public sealed class CategoryRepository : IRepository<Category>
         return _context.Categories
             .AsNoTracking()
             .Include(x => x.Vault)
-            .Include(x => x.Subcategories)
+            .Include(x => x.Cards)
             .FirstOrDefault(x => x.Id == id);
     }
 

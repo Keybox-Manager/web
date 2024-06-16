@@ -4,9 +4,9 @@ using KeyboxWeb.Models.Entites;
 
 namespace KeyboxWeb.Models.Configurations;
 
-internal sealed class SubcategoryConfiguration : IEntityTypeConfiguration<Subcategory>
+internal sealed class CardConfiguration : IEntityTypeConfiguration<Card>
 {
-    public void Configure(EntityTypeBuilder<Subcategory> builder)
+    public void Configure(EntityTypeBuilder<Card> builder)
     {
         builder.HasMany(x => x.Accounts)
             .WithOne(x => x.Subcategory)

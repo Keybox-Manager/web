@@ -11,5 +11,5 @@ public sealed class Account : IModel
     public string Password { get; set; } = string.Empty;
     public DateTime DateAdd { get; set; }
     public DateTime DateUpdate { get; set; }
-    public Subcategory Subcategory { get; set; } = new();
+    public Card Subcategory { get; set; } = new();
 }

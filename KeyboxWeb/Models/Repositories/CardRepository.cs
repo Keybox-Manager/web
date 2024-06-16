@@ -5,16 +5,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KeyboxWeb.Models.Repositories;
 
-public sealed class SubcategoryRepository : IRepository<Subcategory>
+public sealed class CardRepository : IRepository<Card>
 {
     private readonly KeyboxContext _context;
 
-    public SubcategoryRepository(KeyboxContext context)
+    public CardRepository(KeyboxContext context)
     {
         _context = context;
     }
 
-    public void Add(Subcategory model)
+    public void Add(Card model)
     {
         _context.Add(model);
         _context.SaveChanges();
@@ -22,32 +22,32 @@ public sealed class SubcategoryRepository : IRepository<Subcategory>
 
     public void Delete(int id)
     {
-        _context.Subcategories
+        _context.Cards
             .Where(x => x.Id == id)
             .ExecuteDelete();
     }
 
-    public IEnumerable<Subcategory> Get()
+    public IEnumerable<Card> Get()
     {
-        return _context.Subcategories
+        return _context.Cards
             .AsNoTracking()
             .Include(x => x.Category)
             .Include(x => x.Accounts)
             .ToList();
     }
 
-    public Subcategory? Get(int id)
+    public Card? Get(int id)
     {
-        return _context.Subcategories
+        return _context.Cards
             .AsNoTracking()
             .Include(x => x.Category)
             .Include(x => x.Accounts)
             .FirstOrDefault(x => x.Id == id);
     }
 
-    public void Update(Subcategory model)
+    public void Update(Card model)
     {
-        _context.Subcategories
+        _context.Cards
             .Where(w => w.Id == model.Id)
             .ExecuteUpdate(e => e
                 .SetProperty(p => p.CategoryId, model.CategoryId)

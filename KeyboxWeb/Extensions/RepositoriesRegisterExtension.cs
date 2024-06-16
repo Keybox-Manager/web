@@ -20,7 +20,7 @@ internal static class RepositoriesRegisterExtension
     {
         services.AddScoped<IRepository<Account>, AccountRepository>();
         services.AddScoped<IRepository<Category>, CategoryRepository>();
-        services.AddScoped<IRepository<Subcategory>, SubcategoryRepository>();
+        services.AddScoped<IRepository<Card>, CardRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRepository<Vault>, VaultRepository>();
 

@@ -10,14 +10,14 @@ public sealed class KeyboxContext : DbContext
 
     public DbSet<Account> Accounts { get; set; }
     public DbSet<Category> Categories { get; set; }
-    public DbSet<Subcategory> Subcategories { get; set; }
+    public DbSet<Card> Cards { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Vault> Vaults { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-        modelBuilder.ApplyConfiguration(new SubcategoryConfiguration());
+        modelBuilder.ApplyConfiguration(new CardConfiguration());
         modelBuilder.ApplyConfiguration(new UserConfiguration());
         modelBuilder.ApplyConfiguration(new VaultConfiguration());
 

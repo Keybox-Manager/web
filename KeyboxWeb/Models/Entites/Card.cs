@@ -2,7 +2,7 @@
 
 namespace KeyboxWeb.Models.Entites;
 
-public sealed class Subcategory : IModel
+public sealed class Card : IModel
 {
     public int Id { get; set; }
     public int CategoryId { get; set; }
