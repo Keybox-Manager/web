@@ -70,7 +70,7 @@ namespace KeyboxWeb.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Subcategories",
+                name: "Cards",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -83,9 +83,9 @@ namespace KeyboxWeb.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Subcategories", x => x.Id);
+                    table.PrimaryKey("PK_Cards", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Subcategories_Categories_CategoryId",
+                        name: "FK_Cards_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
@@ -98,7 +98,7 @@ namespace KeyboxWeb.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    SubcategoryId = table.Column<int>(type: "integer", nullable: false),
+                    CardId = table.Column<int>(type: "integer", nullable: false),
                     Login = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: true),
                     Password = table.Column<string>(type: "text", nullable: false),
@@ -109,27 +109,27 @@ namespace KeyboxWeb.Migrations
                 {
                     table.PrimaryKey("PK_Accounts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Accounts_Subcategories_SubcategoryId",
-                        column: x => x.SubcategoryId,
-                        principalTable: "Subcategories",
+                        name: "FK_Accounts_Cards_CardId",
+                        column: x => x.CardId,
+                        principalTable: "Cards",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Accounts_SubcategoryId",
+                name: "IX_Accounts_CardId",
                 table: "Accounts",
-                column: "SubcategoryId");
+                column: "CardId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cards_CategoryId",
+                table: "Cards",
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_VaultId",
                 table: "Categories",
                 column: "VaultId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Subcategories_CategoryId",
-                table: "Subcategories",
-                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Vaults_UserId",
@@ -144,7 +144,7 @@ namespace KeyboxWeb.Migrations
                 name: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "Subcategories");
+                name: "Cards");
 
             migrationBuilder.DropTable(
                 name: "Categories");

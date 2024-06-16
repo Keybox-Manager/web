@@ -4,7 +4,6 @@ using KeyboxWeb.Models.Entites;
 
 namespace KeyboxWeb.Logic.Services;
 
-
 public class CardService : ICardService
 {
     // Логика карточек
@@ -43,11 +42,10 @@ public class CardService : ICardService
     }
 
     public Card Get(int id) {
-        return _repository.Get(id) ?? throw new ArgumentNullException(nameof(id), "ID карточки (Card) не может быть null.");
+        return _repository.Get(id) ?? throw new ArgumentException($"Не найдена карточка по данному Id = {id}");
     }
 
     public IEnumerable<Card> Get() {
         return _repository.Get();
     }
-
 }

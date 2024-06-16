@@ -5,11 +5,11 @@ namespace KeyboxWeb.Models.Entites;
 public sealed class Account : IModel
 {
     public int Id { get; set; }
-    public int SubcategoryId { get; set; }
+    public int CardId { get; set; }
     public string Login { get; set; } = string.Empty;
     public string? Email { get; set; }
     public string Password { get; set; } = string.Empty;
     public DateTime DateAdd { get; set; }
     public DateTime DateUpdate { get; set; }
-    public Card Subcategory { get; set; } = new();
+    public Card Card { get; set; } = new();
 }

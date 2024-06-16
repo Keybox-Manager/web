@@ -9,7 +9,7 @@ internal sealed class CardConfiguration : IEntityTypeConfiguration<Card>
     public void Configure(EntityTypeBuilder<Card> builder)
     {
         builder.HasMany(x => x.Accounts)
-            .WithOne(x => x.Subcategory)
-            .HasForeignKey(x => x.SubcategoryId);
+            .WithOne(x => x.Card)
+            .HasForeignKey(x => x.CardId);
     }
 }

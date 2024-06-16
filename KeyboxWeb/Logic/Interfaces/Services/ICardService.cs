@@ -1,9 +1,6 @@
-// Сервисы
 using KeyboxWeb.Models.Entites;
-using Microsoft.VisualBasic;
 
 namespace KeyboxWeb.Logic.Interfaces.Services;
-
 
 public interface ICardService
 {
