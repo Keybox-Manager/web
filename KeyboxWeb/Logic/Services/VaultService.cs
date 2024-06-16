@@ -6,8 +6,8 @@ namespace KeyboxWeb.Logic.Services;
 
 public class VaultService : IVaultService
 {
-
     private readonly IRepository<Vault> _repository;
+
     public VaultService(IRepository<Vault> repository) {
         _repository = repository;
     }
