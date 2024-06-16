@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using KeyboxWeb.Logic.Interfaces.Services
+@inject ICategoryService _categoryService
+
+@{
+    var categories = _categoryService.Get();
+    string vaultName = categories.FirstOrDefault().Vault.Name;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -21,6 +29,11 @@
             padding: 90px 0 0;
             box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
             z-index: 99;
+    using KeyboxWeb.Models.Entites;
+    using Microsoft.EntityFrameworkCore.Internal;
+    using Microsoft.AspNetCore.Components;
+    using Microsoft.EntityFrameworkCore.Metadata.Internal;
+    using KeyboxWeb.Controllers;
         }
 
         @@media (max-width: 767.98px) {
@@ -92,15 +105,17 @@
                         <li class="nav-item">
                           <a class="nav-link active" aria-current="page" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                            <span class="ml-2">Home</span>
+                            <span class="ml-2">@vaultName</span>
                           </a>
                         </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-                            <span class="ml-2">Categories</span>
-                          </a>
-                        </li>
+                        @foreach (var item in categories){
+                         <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                                <span class="ml-2">@item.Name</span>
+                            </a>
+                         </li>
+                        }
                         
                         <li class="nav-item">
                             <a class="btn btn-sm btn-light ml-3 mt-2 border" href="#">➕ Create Category</a>

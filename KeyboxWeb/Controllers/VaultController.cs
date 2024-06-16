@@ -9,12 +9,23 @@ namespace KeyboxWeb.Controllers;
 public class VaultController : Controller {
     
     private readonly ICardService _cardService;
-    public VaultController(ICardService cardService) {
+    private readonly ICategoryService _categoryService;
+    public VaultController(ICardService cardService, ICategoryService categoryService) {
         _cardService = cardService;
+        _categoryService = categoryService;
+    }
+
+    public IEnumerable<Category> GetCategories() {
+        return _categoryService.Get();
     }
 
     public IActionResult Index() {
         var cards = _cardService.Get();
         return View(cards);
+    }
+
+    public IActionResult AddCard() {
+        var card = _cardService.Add;
+        return RedirectToAction("Index", "Vault");
     }
 }

@@ -1,3 +1,6 @@
+@using KeyboxWeb.Models.Entites
+@model IEnumerable<Card>
+
 @{
     ViewData["Title"] = "Vault page";
 }
@@ -6,14 +9,27 @@
 
 
 <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
-    <div class="h2 pb-4">VaultName</div>
+    <div class="h2 pb-4">@Model.FirstOrDefault().Category.Name</div>
     
-    <a href="/home/card"><div class="alert alert-dark" role="alert">Twitter</div></a>
-    <a href="/home/card"><div class="alert alert-dark" role="alert">Google</div></a>
-    <a href="/home/card"><div class="alert alert-dark" role="alert">Apple</div></a>
+    @foreach (var item in Model) {
+      <div class="alert alert-primary" role="alert">@item.Id / @item.Name, @item.Url / @item.Notes</div>
+    }
+
+
+
 
       <br>
-    <div class="alert alert-success" role="alert">+ Add Card</div>
+
+      @* <form method="post" asp-controller="Vault" asp-action="AddCard">
+        <p>
+          <label asp-for="Name">Имя</label><br />
+          <input type="text" asp-for="@CategoryId" />
+        </p>
+        <p>
+            <label asp-for="Age">Возраст</label><br />
+            <input type="number" asp-for="Age" />
+        </p>
+        <button type="submit" class="alert alert-success" role="alert">+ Add Card</button>
+      </form> *@
 
 </main>
-

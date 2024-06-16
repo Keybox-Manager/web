@@ -11,6 +11,7 @@ internal static class ServicesRegisterExtension
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<ICardService, CardService>();
         services.AddScoped<IVaultService, VaultService>();
+        services.AddScoped<ICategoryService, CategoryService>();
 
         return services;
     }
