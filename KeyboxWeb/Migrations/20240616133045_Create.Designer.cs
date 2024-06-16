@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace KeyboxWeb.Migrations
 {
     [DbContext(typeof(KeyboxContext))]
-    [Migration("20240614152714_Create")]
+    [Migration("20240616133045_Create")]
     partial class Create
     {
         /// <inheritdoc />
@@ -33,6 +33,9 @@ namespace KeyboxWeb.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CardId")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("DateAdd")
                         .HasColumnType("timestamp with time zone");
 
@@ -50,42 +53,14 @@ namespace KeyboxWeb.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("SubcategoryId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("SubcategoryId");
+                    b.HasIndex("CardId");
 
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("KeyboxWeb.Models.Entites.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("VaultId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VaultId");
-
-                    b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("KeyboxWeb.Models.Entites.Subcategory", b =>
+            modelBuilder.Entity("KeyboxWeb.Models.Entites.Card", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -113,7 +88,32 @@ namespace KeyboxWeb.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Subcategories");
+                    b.ToTable("Cards");
+                });
+
+            modelBuilder.Entity("KeyboxWeb.Models.Entites.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("VaultId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VaultId");
+
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("KeyboxWeb.Models.Entites.User", b =>
@@ -169,13 +169,24 @@ namespace KeyboxWeb.Migrations
 
             modelBuilder.Entity("KeyboxWeb.Models.Entites.Account", b =>
                 {
-                    b.HasOne("KeyboxWeb.Models.Entites.Subcategory", "Subcategory")
+                    b.HasOne("KeyboxWeb.Models.Entites.Card", "Card")
                         .WithMany("Accounts")
-                        .HasForeignKey("SubcategoryId")
+                        .HasForeignKey("CardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Subcategory");
+                    b.Navigation("Card");
+                });
+
+            modelBuilder.Entity("KeyboxWeb.Models.Entites.Card", b =>
+                {
+                    b.HasOne("KeyboxWeb.Models.Entites.Category", "Category")
+                        .WithMany("Cards")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("KeyboxWeb.Models.Entites.Category", b =>
@@ -189,17 +200,6 @@ namespace KeyboxWeb.Migrations
                     b.Navigation("Vault");
                 });
 
-            modelBuilder.Entity("KeyboxWeb.Models.Entites.Subcategory", b =>
-                {
-                    b.HasOne("KeyboxWeb.Models.Entites.Category", "Category")
-                        .WithMany("Subcategories")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
             modelBuilder.Entity("KeyboxWeb.Models.Entites.Vault", b =>
                 {
                     b.HasOne("KeyboxWeb.Models.Entites.User", "User")
@@ -211,14 +211,14 @@ namespace KeyboxWeb.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("KeyboxWeb.Models.Entites.Category", b =>
-                {
-                    b.Navigation("Subcategories");
-                });
-
-            modelBuilder.Entity("KeyboxWeb.Models.Entites.Subcategory", b =>
+            modelBuilder.Entity("KeyboxWeb.Models.Entites.Card", b =>
                 {
                     b.Navigation("Accounts");
+                });
+
+            modelBuilder.Entity("KeyboxWeb.Models.Entites.Category", b =>
+                {
+                    b.Navigation("Cards");
                 });
 
             modelBuilder.Entity("KeyboxWeb.Models.Entites.User", b =>

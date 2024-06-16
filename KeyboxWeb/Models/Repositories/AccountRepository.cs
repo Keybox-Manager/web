@@ -31,7 +31,7 @@ public sealed class AccountRepository : IRepository<Account>
     {
         return _context.Accounts
             .AsNoTracking()
-            .Include(x => x.Subcategory)
+            .Include(x => x.Card)
             .ToList();
     }
 
@@ -39,7 +39,7 @@ public sealed class AccountRepository : IRepository<Account>
     {
         return _context.Accounts
             .AsNoTracking()
-            .Include(x => x.Subcategory)
+            .Include(x => x.Card)
             .FirstOrDefault(x => x.Id == id);
     }
 
@@ -48,7 +48,7 @@ public sealed class AccountRepository : IRepository<Account>
         _context.Accounts
             .Where(w => w.Id == model.Id)
             .ExecuteUpdate(e => e
-                .SetProperty(p => p.SubcategoryId, model.SubcategoryId)
+                .SetProperty(p => p.CardId, model.CardId)
                 .SetProperty(p => p.Login, model.Login)
                 .SetProperty(p => p.Email, model.Email)
                 .SetProperty(p => p.Password, model.Password)
