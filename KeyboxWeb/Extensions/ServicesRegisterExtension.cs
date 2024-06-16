@@ -9,6 +9,8 @@ internal static class ServicesRegisterExtension
     {
         services.AddScoped<ICryptoService, CryptoService>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<ICardService, CardService>();
+        services.AddScoped<IVaultService, VaultService>();
 
         return services;
     }
