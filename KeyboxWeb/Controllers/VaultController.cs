@@ -15,17 +15,27 @@ public class VaultController : Controller {
         _categoryService = categoryService;
     }
 
+    // Получаем список всех категорий (для master-view страницы)
     public IEnumerable<Category> GetCategories() {
         return _categoryService.Get();
     }
+
 
     public IActionResult Index() {
         var cards = _cardService.Get();
         return View(cards);
     }
 
-    public IActionResult AddCard() {
-        var card = _cardService.Add;
-        return RedirectToAction("Index", "Vault");
+    public IActionResult DeleteCard(int id) {
+        _cardService.Delete(id);
+        return RedirectToAction("Index");
+
     }
+
+
+    public IActionResult ChangeCard(Card card) {
+        _cardService.Change(card);
+        return RedirectToAction("Index");
+    }
+    
 }
