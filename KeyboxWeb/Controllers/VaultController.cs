@@ -28,14 +28,20 @@ public class VaultController : Controller {
 
     public IActionResult DeleteCard(int id) {
         _cardService.Delete(id);
-        return RedirectToAction("Index");
+        return RedirectToAction(nameof(Index));
 
     }
 
-
+    [HttpGet]
+    public IActionResult ChangeCard(int id) {
+        var card = _cardService.Get(id);
+        return View(card);
+    }
+    
+    [HttpPost]
     public IActionResult ChangeCard(Card card) {
         _cardService.Change(card);
-        return RedirectToAction("Index");
+        return RedirectToAction(nameof(Index));
     }
     
 }

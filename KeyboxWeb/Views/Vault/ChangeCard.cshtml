@@ -1,0 +1,20 @@
+@using KeyboxWeb.Models.Entites
+@model Card
+
+@{ ViewData["Title"] = "Change Card"; }
+
+
+  <div class="h2 pb-4">ChangeCard</div>
+
+    <form asp-action="ChangeCard" asp-controller="Vault" asp-route-id="Id">
+        <input type="text" asp-for="@Model.Id" placeholder="id" />
+        <input type="text" asp-for="@Model.CategoryId" placeholder="categoryId" />
+        <input type="text" asp-for="@Model.Name" placeholder="name" />
+        <input type="text" asp-for="@Model.Url" placeholder="url" />
+
+        <input type="submit" value="Сохранить" />
+      </p>
+    </form>
+    
+  
+
