@@ -6,15 +6,44 @@
 
   <div class="h2 pb-4">ChangeCard</div>
 
-    <form asp-action="ChangeCard" asp-controller="Vault" asp-route-id="Id">
+    @* <form asp-action="ChangeCard" asp-controller="Vault" asp-route-id="Id">
         <input type="text" asp-for="@Model.Id" placeholder="id" />
+        <!-- для Model.Category.Name сделать выпадающий список с его категориями -->
         <input type="text" asp-for="@Model.CategoryId" placeholder="categoryId" />
         <input type="text" asp-for="@Model.Name" placeholder="name" />
-        <input type="text" asp-for="@Model.Url" placeholder="url" />
+        <input type="url" asp-for="@Model.Url" placeholder="url" />
+        <input type="text" asp-for="@Model.Notes" placeholder="notes" />
 
         <input type="submit" value="Сохранить" />
       </p>
-    </form>
+    </form> *@
     
-  
+
+    <form asp-action="ChangeCard" asp-controller="Vault" asp-route-id="Id">
+
+        <div class="input-group mb-3">
+          <span class="input-group-text">card ID</span>
+          <input type="text" asp-for="@Model.Id" class="form-control" placeholder="Username">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Category ID</span>
+          <input type="text" asp-for="@Model.CategoryId" class="form-control" placeholder="Username">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Name</span>
+          <input type="text" asp-for="@Model.Name" class="form-control" placeholder="Username">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">URL</span>
+          <input type="text" asp-for="@Model.Url" class="form-control" placeholder="Username">
+        </div>
+        <div class="input-group">
+          <span class="input-group-text">Notes</span>
+          <textarea class="form-control" asp-for="@Model.Notes"></textarea>
+        </div>
+
+        <input class="btn btn-primary p-2 mt-4 w-100" type="submit" value="Изменить" />
+      </p>
+    </form>
+
 

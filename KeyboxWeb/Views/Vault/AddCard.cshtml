@@ -1,0 +1,30 @@
+@using KeyboxWeb.Models.Entites
+@model Card
+
+@{
+    ViewData["Title"] = "Add Card";
+}
+
+<form asp-action="AddCard" asp-controller="Vault" asp-route-id="Id">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">Category ID</span>
+        <input type="text" asp-for="@Model.CategoryId" class="form-control" placeholder="Category">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text">Name</span>
+        <input type="text" asp-for="@Model.Name" class="form-control" placeholder="Name">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text">URL</span>
+        <input type="text" asp-for="@Model.Url" class="form-control" placeholder="URL">
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-text">Notes</span>
+        <textarea class="form-control" asp-for="@Model.Notes"></textarea>
+    </div>
+
+    <input class="btn btn-success p-2 mt-4 w-100" type="submit" value="Создать" />
+    </p>
+</form>

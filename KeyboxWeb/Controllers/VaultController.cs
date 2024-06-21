@@ -43,5 +43,16 @@ public class VaultController : Controller {
         _cardService.Change(card);
         return RedirectToAction(nameof(Index));
     }
+
+    [HttpGet]
+    public IActionResult AddCard() {
+        return View();
+    }
+    
+    [HttpPost]
+    public IActionResult AddCard(Card card) {
+        _cardService.Add(card);
+        return RedirectToAction(nameof(Index));
+    }
     
 }
