@@ -7,4 +7,5 @@ public interface IUserService
     bool TryRegister(User user);
     bool TryLogin(string login, string password);
     void Logout();
+    User Get();
 }

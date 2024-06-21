@@ -11,5 +11,7 @@ internal sealed class CardConfiguration : IEntityTypeConfiguration<Card>
         builder.HasMany(x => x.Accounts)
             .WithOne(x => x.Card)
             .HasForeignKey(x => x.CardId);
+
+        builder.HasIndex(x => x.Name);
     }
 }

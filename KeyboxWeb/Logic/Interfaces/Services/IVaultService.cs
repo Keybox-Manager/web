@@ -6,4 +6,5 @@ public interface IVaultService {
     void Add(Vault vault);
     void Delete(int id);
     void Change(Vault vault);
+    Vault Get();
 }

@@ -68,6 +68,17 @@ public sealed class UserService : IUserService
         _httpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
     }
 
+    public User Get()
+    {
+        if (!IsAuthenticated())
+        {
+            throw new InvalidOperationException("Пользователь не аутентифицирован");
+        }
+
+        string login = _httpContext.User.Identity.Name;
+        return _repository.Get(login);
+    }
+
     private bool IsAuthenticated()
     {
         var userIdentity = _httpContext.User.Identity;
