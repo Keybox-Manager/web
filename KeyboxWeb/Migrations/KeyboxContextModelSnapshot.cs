@@ -85,6 +85,8 @@ namespace KeyboxWeb.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("Name");
+
                     b.ToTable("Cards");
                 });
 
