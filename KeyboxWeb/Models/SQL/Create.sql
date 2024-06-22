@@ -59,12 +59,14 @@ CREATE INDEX "IX_Accounts_CardId" ON "Accounts" ("CardId");
 
 CREATE INDEX "IX_Cards_CategoryId" ON "Cards" ("CategoryId");
 
+CREATE INDEX "IX_Cards_Name" ON "Cards" ("Name");
+
 CREATE INDEX "IX_Categories_VaultId" ON "Categories" ("VaultId");
 
 CREATE INDEX "IX_Vaults_UserId" ON "Vaults" ("UserId");
 
 INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
-VALUES ('20240616133045_Create', '8.0.6');
+VALUES ('20240621151455_Create', '8.0.6');
 
 COMMIT;
 

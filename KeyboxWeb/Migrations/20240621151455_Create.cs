@@ -127,6 +127,11 @@ namespace KeyboxWeb.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Cards_Name",
+                table: "Cards",
+                column: "Name");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Categories_VaultId",
                 table: "Categories",
                 column: "VaultId");

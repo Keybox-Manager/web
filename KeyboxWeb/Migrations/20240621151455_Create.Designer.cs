@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace KeyboxWeb.Migrations
 {
     [DbContext(typeof(KeyboxContext))]
-    [Migration("20240616133045_Create")]
+    [Migration("20240621151455_Create")]
     partial class Create
     {
         /// <inheritdoc />
@@ -87,6 +87,8 @@ namespace KeyboxWeb.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("Name");
 
                     b.ToTable("Cards");
                 });

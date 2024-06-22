@@ -7,9 +7,11 @@ namespace KeyboxWeb.Logic.Services;
 public class VaultService : IVaultService
 {
     private readonly IRepository<Vault> _repository;
+    private readonly IUserService _userService;
 
-    public VaultService(IRepository<Vault> repository) {
+    public VaultService(IRepository<Vault> repository, IUserService userService) {
         _repository = repository;
+        _userService = userService;
     }
 
     public void Add(Vault vault)
@@ -25,5 +27,12 @@ public class VaultService : IVaultService
     public void Delete(int id)
     {
         _repository.Delete(id);
+    }
+
+    public Vault Get()
+    {
+        var user = _userService.Get();
+        var vault = user.Vaults.First();
+        return _repository.Get(vault.Id) ?? throw new ArgumentException($"Не найдена хранилище");
     }
 }
