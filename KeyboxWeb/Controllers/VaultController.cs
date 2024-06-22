@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using KeyboxWeb.Logic.Services;
 using KeyboxWeb.Models.Entites;
 using KeyboxWeb.Logic.Interfaces.Services;
 
@@ -54,5 +53,23 @@ public class VaultController : Controller {
         _cardService.Add(card);
         return RedirectToAction(nameof(Index));
     }
+
+    [HttpGet]
+    public IActionResult AddCategory() {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult AddCategory(Category ctgr) {
+        _categoryService.Add(ctgr);
+        return RedirectToAction(nameof(Index));
+    }
+
     
+    public IActionResult DeleteCategory(int id) {
+        _cardService.Delete(id);
+        return RedirectToAction(nameof(Index));
+    }
+    
+
 }
