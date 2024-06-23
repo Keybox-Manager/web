@@ -14,11 +14,11 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav flex-column">
             <div class="h2 p-2 mt-2 border-bottom">@vaultName</div>
-            @foreach (var item in categories)
+            @foreach (var category in categories)
             {
                 <li class="nav-item">
-                    <a href="#" class="nav-link active">@item.Name</a>
-                    <a href="/category/deletecategory/@item.Id" class="text-danger">Удалить</a>
+                    <a href="#" class="nav-link active">@category.Name</a>
+                    <a href="/category/deletecategory/@category.Id" class="text-danger">Удалить</a>
                 </li>
             }
         </ul>

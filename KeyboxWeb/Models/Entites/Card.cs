@@ -10,6 +10,6 @@ public sealed class Card : IModel
     public string? Url { get; set; }
     public string? Notes { get; set; }
     public string? Icon { get; set; }
-    public Category? Category { get; set; }
+    public required Category Category { get; set; }
     public ICollection<Account> Accounts { get; set; } = [];
 }
