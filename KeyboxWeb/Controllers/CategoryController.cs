@@ -20,16 +20,13 @@ public class CategoryController : Controller {
     }
 
     [HttpPost]
-    public IActionResult AddCategory(Category ctgr) {
-        _categoryService.Add(ctgr);
+    public IActionResult AddCategory(Category category) {
+        _categoryService.Add(category);
         return RedirectToAction("Index", "Vault");
     }
-
     
     public IActionResult DeleteCategory(int id) {
         _categoryService.Delete(id);
         return RedirectToAction("Index", "Vault");
     }
-
-
 }

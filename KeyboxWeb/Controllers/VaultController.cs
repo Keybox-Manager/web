@@ -8,6 +8,7 @@ namespace KeyboxWeb.Controllers;
 public class VaultController : Controller
 {
     private readonly ICardService _cardService;
+
     public VaultController(ICardService cardService)
     {
         _cardService = cardService;
@@ -53,4 +54,8 @@ public class VaultController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    public Card GetCard(int id)
+    {
+        return _cardService.Get(id);
+    }
 }

@@ -1,4 +1,4 @@
-using KeyboxWeb.Logic.Interfaces.Repositories;
+п»їusing KeyboxWeb.Logic.Interfaces.Repositories;
 using KeyboxWeb.Logic.Interfaces.Services;
 using KeyboxWeb.Models.Entites;
 
@@ -33,6 +33,6 @@ public class VaultService : IVaultService
     {
         var user = _userService.Get();
         var vault = user.Vaults.First();
-        return _repository.Get(vault.Id) ?? throw new ArgumentException($"Не найдена хранилище");
+        return _repository.Get(vault.Id) ?? throw new ArgumentException($"РќРµ РЅР°Р№РґРµРЅР° С…СЂР°РЅРёР»РёС‰Рµ");
     }
 }
