@@ -1,11 +1,4 @@
-﻿@using KeyboxWeb.Logic.Interfaces.Services
-@inject ICategoryService _categoryService
-
-@{
-    var categories = _categoryService.Get();
-    string vaultName = categories.FirstOrDefault().Vault.Name;
-}
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,36 +63,12 @@
     <div class="row">
         <!-- ПЕРВЫЙ БЛОК -->
         <div class="col-12 col-sm-4 border">
-            <div class="h2 p-2 mt-2 border-bottom">@vaultName</div>
-
-            <nav class="navbar-expand-lg">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav flex-column">
-                        @foreach (var item in categories) 
-                        {
-                            <li class="nav-item"> <a class="nav-link active" href="#">@item.Name</a>
-                        }
-                    </ul>
-                </div>
-                <a href="/vault/addcategory" class="btn btn-light border">+ Новая категория</a>
-            </nav>
+            <partial name="~/Views/Category/Index.cshtml" />
         </div>
 
-        <!-- ВТОРОЙ БЛОК -->
-        <div class="col-12 col-sm-4 ">
-            
-
-            <div class="list-group">
-                @RenderBody()
-            </div>
-
-        </div>
-
-        <!-- ТРЕТЬЯ КОЛОНКА -->
-        <div class="col-12 col-sm-4">
-            <h3>Колонка 3</h3>
-            <p>Содержимое третьей колонки</p>
-        </div>
+        <!-- ВТОРОЙ и ТРЕТИЙ БЛОКИ -->
+        @RenderBody()
+        
     </div>
 </div>
 

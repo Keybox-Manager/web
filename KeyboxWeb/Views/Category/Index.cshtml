@@ -1,0 +1,27 @@
+@using KeyboxWeb.Logic.Interfaces.Services
+@inject ICategoryService _categoryService
+
+@{
+    var categories = _categoryService.Get();
+    string vaultName = "";
+    
+    if (string.IsNullOrEmpty(vaultName)) { vaultName = "Vault is null"; }
+    else {vaultName = categories.First().Vault.Name; }
+    
+}
+
+<nav class="navbar-expand-lg">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav flex-column">
+            <div class="h2 p-2 mt-2 border-bottom">@vaultName</div>
+            @foreach (var item in categories)
+            {
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">@item.Name</a>
+                    <a href="/category/deletecategory/@item.Id" class="text-danger">Удалить</a>
+                </li>
+            }
+        </ul>
+    </div>
+    <a href="/category/addcategory" class="btn btn-light border">+ Новая категория</a>
+</nav>
