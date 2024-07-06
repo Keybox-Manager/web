@@ -10,29 +10,29 @@
 }
 
 function updateCardInfo(card) {
-    $('#cardid').show();
+    $('#svgCardId').hide();
+    $('#cardId').show();
     $('#cardName').text(card.name);
-    $('#categoryName').text(card.category.name);
-    $('#password').text(card.category.name);
-    $('#url').text(card.url);
-    $('#notes').text(card.notes);
+    $('#categoryName').val(card.category.name);
+    $('#url').val(card.url);
+    $('#notes').val(card.notes);
 
     updateAccounts(card.accounts);
 }
 
 function updateAccounts(accounts) {
-    const accountList = $('#accountList');
-    accountList.empty();
+    $('#accountList').empty();
     accounts.forEach(account => {
-        const accountElement = $(`
-            <div>
-                <div>Login: ${account.login}</div>
-                <div>Password: ${account.password}</div>
-                <div>Email: ${account.email}</div>
-                <div>DateAdd: ${account.dateadd}</div>
-                <div>DateUpdate: ${account.dateupdate}</div>
-            </div>
-        `);
-        accountList.append(accountElement);
+        addElement('loginDivPattern', account.login);
+        addElement('passwordDivPattern', account.password);
+        addElement('emailDivPattern', account.email);
     });
+}
+
+function addElement(id, value) {
+    const element = $('#' + id).clone()
+        .removeAttr('id');
+    element.find("input").val(value)
+        .removeAttr('id');
+    $('#accountList').append(element);
 }
