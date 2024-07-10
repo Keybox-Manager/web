@@ -4,19 +4,22 @@
 
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
-<div style="display:flex; align-items:center; justify-content:center;height:100vh;">
-    <form asp-action="Login" asp-controller="Account">
-        <h1 class="h3 mb-3 fw-normal">Пожалуйста, войдите в систему</h1>
+<div style="display:flex; align-items:center; justify-content:center;height:100vh; font-size: 1.3rem;">
+    <form asp-action="Login" asp-controller="Account" style="width: 20%">
+        <div class="mb-3 pb-4 fw-normal" style="display: flex; align-items:center; justify-content:center;">
+            <img src="~/img/login-logo.png" width="100" /> 
+        </div>
+        <div class="h4 mb-3 fw-normal" style="display: flex; align-items:center; justify-content:center;">Авторизация</div>
         <div class="form-floating">
             <input type="text" class="form-control" id="floatingLogin" name="login" placeholder="Login">
-            <label for="floatingLogin">Login</label>
+            <label for="floatingLogin" style="display: flex; align-items:center; color: rgb(162, 165, 174) !important">Логин</label>
         </div>
 
         <div class="form-floating">
             <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <label for="floatingPassword" style="display: flex; align-items:center; color: rgb(162, 165, 174) !important">Пароль</label>
         </div>
 
-        <button class="btn btn-primary w-100 py-2" type="submit">Войти</button>
+        <button class="btn btn-primary w-100 py-2 mt-4" style="font-size: 1.3rem;" type="submit">Войти</button>
     </form>
 </div>
