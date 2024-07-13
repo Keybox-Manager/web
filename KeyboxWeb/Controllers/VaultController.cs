@@ -1,23 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
 using KeyboxWeb.Models.Entites;
 using KeyboxWeb.Logic.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KeyboxWeb.Controllers;
 
-
+[Authorize]
 public class VaultController : Controller
 {
     private readonly ICardService _cardService;
+    private readonly ICategoryService _categoryService;
 
-    public VaultController(ICardService cardService)
+    public VaultController(ICardService cardService, ICategoryService categoryService)
     {
         _cardService = cardService;
+        _categoryService = categoryService;
     }
 
     public IActionResult Index()
     {
-        var cards = _cardService.Get();
-        return View(cards);
+        var category = _categoryService.GetFirst();
+        return View(category.Cards);
     }
 
     public IActionResult DeleteCard(int id)
@@ -52,10 +55,5 @@ public class VaultController : Controller
     {
         _cardService.Add(card);
         return RedirectToAction(nameof(Index));
-    }
-
-    public Card GetCard(int id)
-    {
-        return _cardService.Get(id);
     }
 }

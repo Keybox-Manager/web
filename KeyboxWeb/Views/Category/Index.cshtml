@@ -1,13 +1,9 @@
 @using KeyboxWeb.Logic.Interfaces.Services
-@inject ICategoryService _categoryService
+@inject IVaultService _vaultService
 
 @{
-    var categories = _categoryService.Get();
-    string vaultName = "";
-
-    if (string.IsNullOrEmpty(vaultName)) { vaultName = "Vault is null"; }
-    else { vaultName = categories.First().Vault.Name; }
-
+    var vault = _vaultService.GetFirst();
+    var categories = vault.Categories;
 }
 
 <style>
@@ -18,12 +14,12 @@
     }
 </style>
 
-
+<script src="~/js/card/getByCategory.js"></script>
 
 <nav class="navbar-expand-lg w-100">
     <div class="" id="navbarNav">
         <ul class="navbar-nav flex-column">
-            <div class="h2 p-2 mt-2 ml-4 border-bottom">@vaultName</div>
+            <div class="h2 p-2 mt-2 ml-4 border-bottom">@vault.Name</div>
             <div>
                 <div class="h5 p-2 mt-2 ml-4 float-left" style="color: #babad5">Categories</div>
                 <div class="float-right m-2 pt-1 pr-4">
@@ -42,7 +38,7 @@
 
                 @foreach (var category in categories)
                 {
-                    <nav class="nav flex-column">
+                    <nav class="nav flex-column" onclick="getByCategory(@category.Id)">
                         <a href="#" class="nav-link text-dark category-hover">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-folder2" viewBox="0 0 16 16" style="margin-top: -0.2rem">

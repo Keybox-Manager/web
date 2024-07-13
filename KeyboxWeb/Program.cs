@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews()
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options => {
-        options.LoginPath = "/home/login";
+        options.LoginPath = "/account/login";
         options.Cookie.Name = "Keybox-Manager";
     });
 

@@ -1,0 +1,40 @@
+﻿@using KeyboxWeb.Models.Entites
+@model Card
+
+<div>
+    <div class="h2 m-2">@Model.Name</div>
+    <small class="h-6 p-2" style="color: rgb(180, 180, 180)">Информация о карточке</small>
+
+    <div class="input-group mb-3 w-50">
+        <span class="input-group-text">Category</span>
+        <input type="text" class="form-control" value="@Model.Category.Name">
+    </div>
+
+    <div class="input-group mb-3 w-50">
+        <span class="input-group-text">URL</span>
+        <input type="text" class="form-control" value="@Model.Url">
+    </div>
+
+    <div class="input-group mb-3 w-50">
+        <span class="input-group-text">Notes</span>
+        <textarea class="form-control">@Model.Notes</textarea>
+    </div>
+
+    @foreach(var account in Model.Accounts)
+    {
+        <div class="input-group mb-3 w-50">
+            <span class="input-group-text">Login</span>
+            <input type="text" class="form-control" value="@account.Login">
+        </div>
+
+        <div class="input-group mb-3 w-50">
+            <span class="input-group-text">Password</span>
+            <input type="password" class="form-control" value="@account.Password">
+        </div>
+
+        <div class="input-group mb-3 w-50">
+            <span class="input-group-text">Email</span>
+            <input type="email" class="form-control" value="@account.Email">
+        </div>
+    }
+</div>
