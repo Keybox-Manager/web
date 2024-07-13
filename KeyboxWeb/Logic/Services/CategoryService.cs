@@ -17,6 +17,8 @@ public sealed class CategoryService : ICategoryService
 
     public void Add(Category category)
     {
+        var vault = _vaultService.GetFirst();
+        category.VaultId = vault.Id;
         _repository.Add(category);
     }
 
