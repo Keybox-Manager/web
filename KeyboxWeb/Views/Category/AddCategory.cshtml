@@ -6,12 +6,12 @@
 }
 
 <div class="h2 p-2 mt-2">Add Category</div>
-<form asp-action="AddCategory" asp-controller="Category" asp-route-id="Id">
+<form asp-action="AddCategory" asp-controller="Category">
 
-    <div class="input-group mb-3">
+    @* <div class="input-group mb-3">
         <span class="input-group-text">Vault ID</span>
         <input type="text" asp-for="@Model.VaultId" value="8" class="form-control" placeholder="VaultId" readonly>
-    </div>
+    </div> *@
     <div class="input-group mb-3">
         <span class="input-group-text">Category Name</span>
         <input type="text" asp-for="@Model.Name" class="form-control" placeholder="Category">
