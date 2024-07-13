@@ -34,6 +34,9 @@ public sealed class UserService : IUserService
 
         var hash = _cryptoService.PasswordToHash(user.Password);
         user.Password = hash;
+        var val = new Vault() { Name = "Val", User = user };
+        val.Categories.Add(new() { Vault = val, Name = "Cat"});
+        user.Vaults.Add(val);
         _repository.Add(user);
         return true;
     }

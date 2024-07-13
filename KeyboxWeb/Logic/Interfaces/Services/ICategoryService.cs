@@ -7,5 +7,6 @@ public interface ICategoryService
     void Add(Category category);
     void Change(Category category);
     void Delete(int id);
-    IEnumerable<Category> Get();
+    Category Get(int id);
+    Category GetFirst();
 }

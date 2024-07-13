@@ -27,14 +27,6 @@ public sealed class UserRepository : IUserRepository
             .ExecuteDelete();
     }
 
-    public IEnumerable<User> Get()
-    {
-        return _context.Users
-            .AsNoTracking()
-            .Include(x => x.Vaults)
-            .ToList();
-    }
-
     public User? Get(string login)
     {
         return _context.Users

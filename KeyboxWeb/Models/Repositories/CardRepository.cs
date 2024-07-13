@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KeyboxWeb.Models.Repositories;
 
-public sealed class CardRepository : IRepository<Card>
+public sealed class CardRepository : ICardRepository
 {
     private readonly KeyboxContext _context;
 
@@ -27,12 +27,13 @@ public sealed class CardRepository : IRepository<Card>
             .ExecuteDelete();
     }
 
-    public IEnumerable<Card> Get()
+    public IEnumerable<Card> Get(string name, int userId)
     {
         return _context.Cards
             .AsNoTracking()
             .Include(x => x.Category)
             .Include(x => x.Accounts)
+            .Where(x => x.Name.ToLower().Contains(name.ToLower()) && x.Category.Vault.UserId == userId)
             .ToList();
     }
 

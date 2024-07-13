@@ -29,7 +29,7 @@ public class VaultService : IVaultService
         _repository.Delete(id);
     }
 
-    public Vault Get()
+    public Vault GetFirst()
     {
         var user = _userService.Get();
         var vault = user.Vaults.First();

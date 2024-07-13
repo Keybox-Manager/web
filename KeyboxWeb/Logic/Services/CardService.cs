@@ -8,15 +8,26 @@ public class CardService : ICardService
 {
     // Логика карточек
 
-    private readonly IRepository<Card> _repository;
+    private readonly ICardRepository _repository;
     private readonly IRepository<Account> _account;
+    private readonly IUserService _userService;
+    private readonly ICategoryService _categoryService;
 
-    public CardService(IRepository<Card> repository, IRepository<Account> account) {
+    public CardService(
+        ICardRepository repository,
+        IRepository<Account> account,
+        IUserService userService,
+        ICategoryService categoryService
+    )
+    {
         _repository = repository;
         _account = account;
+        _userService = userService;
+        _categoryService = categoryService;
     }
 
-    public void AddAccount(Account account) {
+    public void AddAccount(Account account)
+    {
         _account.Add(account);
     }
     public void DeleteAccount(int id)
@@ -29,23 +40,35 @@ public class CardService : ICardService
         _account.Update(account);
     }
 
-    public void Add(Card card) {
+    public void Add(Card card)
+    {
         _repository.Add(card);
     }
 
-    public void Delete(int id) {
+    public void Delete(int id)
+    {
         _repository.Delete(id);
     }
 
-    public void Change(Card card) {
+    public void Change(Card card)
+    {
         _repository.Update(card);
     }
 
-    public Card Get(int id) {
-        return _repository.Get(id) ?? throw new ArgumentException($"Не найдена карточка по данному Id = {id}");
+    public IEnumerable<Card> Get(string? name)
+    {
+        if (string.IsNullOrEmpty(name))
+        {
+            var category = _categoryService.GetFirst();
+            return category.Cards;
+        }
+
+        var user = _userService.Get();
+        return _repository.Get(name, user.Id);
     }
 
-    public IEnumerable<Card> Get() {
-        return _repository.Get();
+    public Card Get(int id)
+    {
+        return _repository.Get(id) ?? throw new ArgumentException($"Не найдена карточка по данному Id = {id}");
     }
 }
