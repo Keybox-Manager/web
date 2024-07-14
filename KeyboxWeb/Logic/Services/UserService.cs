@@ -13,8 +13,11 @@ public sealed class UserService : IUserService
     private readonly ICryptoService _cryptoService;
     private readonly HttpContext _httpContext;
 
-    public UserService(IUserRepository repository, ICryptoService cryptoService, IHttpContextAccessor contextAccessor)
-    {
+    public UserService(
+        IUserRepository repository, 
+        ICryptoService cryptoService, 
+        IHttpContextAccessor contextAccessor
+    ) {
         _repository = repository;
         _cryptoService = cryptoService;
         _httpContext = contextAccessor.HttpContext;
@@ -34,9 +37,8 @@ public sealed class UserService : IUserService
 
         var hash = _cryptoService.PasswordToHash(user.Password);
         user.Password = hash;
-        var val = new Vault() { Name = "Val", User = user };
-        val.Categories.Add(new() { Vault = val, Name = "Cat"});
-        user.Vaults.Add(val);
+
+        AddVaultDefault(user);
         _repository.Add(user);
         return true;
     }
@@ -92,5 +94,18 @@ public sealed class UserService : IUserService
     {
         var user = _repository.Get(login);
         return user != null;
+    }
+
+    private void AddVaultDefault(User user)
+    {
+        var vault = new Vault() { Name = "Vault", User = user };
+        user.Vaults.Add(vault);
+        AddCategoryDefault(vault);
+    }
+
+    private void AddCategoryDefault(Vault vault)
+    {
+        var category = new Category() { Name = "General", Vault = vault };
+        vault.Categories.Add(category);
     }
 }

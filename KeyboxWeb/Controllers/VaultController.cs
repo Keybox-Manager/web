@@ -20,7 +20,7 @@ public class VaultController : Controller
     public IActionResult Index()
     {
         var category = _categoryService.GetFirst();
-        return View(category.Cards);
+        return View(category);
     }
 
     public IActionResult DeleteCard(int id)
@@ -45,9 +45,10 @@ public class VaultController : Controller
     }
 
     [HttpGet]
-    public IActionResult AddCard()
+    public IActionResult AddCard(int categoryId)
     {
-        return View();
+        var category = _categoryService.Get(categoryId);
+        return View(category);
     }
 
     [HttpPost]
