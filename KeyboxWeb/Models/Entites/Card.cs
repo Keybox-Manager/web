@@ -1,8 +1,6 @@
-﻿using KeyboxWeb.Logic.Interfaces.Markers;
+﻿namespace KeyboxWeb.Models.Entites;
 
-namespace KeyboxWeb.Models.Entites;
-
-public sealed class Card : IModel
+public sealed class Card
 {
     public int Id { get; set; }
     public int CategoryId { get; set; }

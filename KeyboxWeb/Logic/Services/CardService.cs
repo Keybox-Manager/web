@@ -18,8 +18,7 @@ public class CardService : ICardService
         IRepository<Account> account,
         IUserService userService,
         ICategoryService categoryService
-    )
-    {
+    ) {
         _repository = repository;
         _account = account;
         _userService = userService;
