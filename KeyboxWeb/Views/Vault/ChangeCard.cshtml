@@ -19,27 +19,27 @@
     </form> *@
     
 
-    <form asp-action="ChangeCard" asp-controller="Vault" asp-route-id="Id">
+    <form asp-action="ChangeCard" asp-controller="Vault">
 
         <div class="input-group mb-3">
           <span class="input-group-text">card ID</span>
-          <input type="text" asp-for="@Model.Id" class="form-control" placeholder="Username">
+          <input type="text" asp-for="Id" class="form-control" placeholder="Username">
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Category ID</span>
-          <input type="text" asp-for="@Model.CategoryId" class="form-control" placeholder="Username">
+          <input type="text" asp-for="CategoryId" class="form-control" placeholder="Username">
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Name</span>
-          <input type="text" asp-for="@Model.Name" class="form-control" placeholder="Username">
+          <input type="text" asp-for="Name" class="form-control" placeholder="Username">
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">URL</span>
-          <input type="text" asp-for="@Model.Url" class="form-control" placeholder="Username">
+          <input type="text" asp-for="Url" class="form-control" placeholder="Username">
         </div>
         <div class="input-group">
           <span class="input-group-text">Notes</span>
-          <textarea class="form-control" asp-for="@Model.Notes"></textarea>
+          <textarea class="form-control" asp-for="Notes"></textarea>
         </div>
 
         <input class="btn btn-primary p-2 mt-4 w-100" type="submit" value="Изменить" />
