@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="~/KeyboxWeb.styles.css" asp-append-version="true" />
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
-        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+          integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
 </head>
 <style>
@@ -58,9 +58,9 @@
         color: #333;
     }
 
-    .sidebar .nav-link.active {
-        color: #0d6efd;
-    }
+        .sidebar .nav-link.active {
+            color: #0d6efd;
+        }
 </style>
 
 <body>
@@ -75,7 +75,9 @@
             </div>
 
             <!-- ВТОРОЙ и ТРЕТИЙ БЛОКИ -->
-            @RenderBody()
+            <div class="row col" id="panelCategory">
+                @RenderBody()
+            </div>
 
         </div>
     </div>

@@ -6,23 +6,16 @@ namespace KeyboxWeb.Controllers;
 public sealed class CardController : Controller
 {
     private readonly ICardService _cardService;
-    private readonly ICategoryService _categoryService;
 
-    public CardController(ICardService cardService, ICategoryService categoryService)
+    public CardController(ICardService cardService)
     {
         _cardService = cardService;
-        _categoryService = categoryService;
-    }
-    public IActionResult Index(int categoryId)
-    {
-        var category = _categoryService.Get(categoryId);
-        return PartialView(category.Cards);
     }
 
     public IActionResult Search(string? name)
     {
         var cards = _cardService.Get(name);
-        return PartialView(nameof(Index), cards);
+        return PartialView(cards);
     }
 
     public IActionResult ShowInfo(int id)
