@@ -17,9 +17,17 @@ public class VaultController : Controller
         _categoryService = categoryService;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(int? categoryId)
     {
-        var category = _categoryService.GetFirst();
+        Category category;
+
+        if (categoryId.HasValue)
+        {
+            category = _categoryService.Get(categoryId.Value);
+            return PartialView(category);
+        }
+
+        category = _categoryService.GetFirst();
         return View(category);
     }
 

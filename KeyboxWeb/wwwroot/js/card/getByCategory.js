@@ -1,8 +1,8 @@
 ﻿function getByCategory(categoryId) {
-    fetch('/card/index?categoryId=' + categoryId)
+    fetch('/vault/index?categoryId=' + categoryId)
         .then(response => response.text())
         .then(view => {
-            $('#cardList').html(view);
+            $('#panelCategory').html(view);
         })
         .catch(error => {
             console.error('Error:', error);

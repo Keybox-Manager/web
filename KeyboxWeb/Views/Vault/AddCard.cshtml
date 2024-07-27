@@ -5,10 +5,7 @@
     ViewData["Title"] = "Add Card";
 }
 
-<form asp-action="AddCard" asp-controller="Vault">
-
-    <input type="hidden" name="CategoryId" value="@Model.Id">
-
+<form asp-action="AddCard" asp-controller="Vault" asp-route-categoryId="@Model.Id">
     <div class="input-group mb-3">
         <span class="input-group-text">Category</span>
         <input type="text" name="Category" class="form-control" placeholder="Category" value="@Model.Name" readonly>
