@@ -21,9 +21,9 @@ public class VaultController : Controller
     {
         Category category;
 
-        if (categoryId.HasValue)
+        if (categoryId != null)
         {
-            category = _categoryService.Get(categoryId.Value);
+            category = _categoryService.Get((int)categoryId);
             return PartialView(category);
         }
 
